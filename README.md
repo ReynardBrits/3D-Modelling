@@ -41,12 +41,13 @@ This creates the `texture.png` file used for the textured and tinted views.
 
 Run each question separately from the terminal:
 
+```
 python q1_display.py
 python q2_translate.py
 python q3_colour.py
 python q4_texture.py
 python q5_tint.py
-
+```
 
 ---
 
@@ -78,8 +79,9 @@ python q5_tint.py
 
 Run:
 
+```
 python q1_display.py
-
+```
 This displays one model at a time. Press `M` to cycle through:
 
 Cube -> Pyramid -> Prism -> Cube
@@ -90,9 +92,9 @@ Cube -> Pyramid -> Prism -> Cube
 ## Question 2: Translation
 
 Run:
-
+```
 python q2_translate.py
-
+```
 This allows the model to move on all three axes:
 
 A / D = X-axis movement
@@ -108,8 +110,9 @@ When the model is changed using `M`, the new model stays in the same position.
 
 Run:
 
-
+```
 python q3_colour.py
+```
 
 This adds coloured surfaces to the models. The model edges remain white.
 
@@ -124,9 +127,9 @@ C = toggle coloured view
 ## Question 4: Texturing
 
 Run:
-
+```
 python q4_texture.py
-
+```
 This adds textured surfaces using `texture.png`.
 
 Use:
@@ -140,9 +143,9 @@ T = toggle textured view
 ## Question 5: Tinting
 
 Run:
-
+```
 python q5_tint.py
-
+```
 This adds tinted textures by combining the texture with the surface colours.
 
 Use:
@@ -154,7 +157,7 @@ V = switch between normal, coloured, textured and tinted view
 
 ## Files Included
 
-
+```
 q1_display.py
 q2_translate.py
 q3_colour.py
@@ -166,7 +169,7 @@ texture.png
 requirements.txt
 README.md
 .gitignore
-
+```
 
 ---
 
