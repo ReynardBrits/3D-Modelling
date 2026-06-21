@@ -141,10 +141,8 @@ class AppState:
     view_mode: str = "normal"
 
 
+# Loads texture.png using pygame and converts it into an OpenGL texture.
 def load_texture(texture_path: str) -> int:
-    """
-    Loads texture.png using pygame and converts it into an OpenGL texture.
-    """
     surface = pygame.image.load(texture_path).convert_alpha()
     surface = pygame.transform.flip(surface, False, True)
 
@@ -174,10 +172,8 @@ def load_texture(texture_path: str) -> int:
     return texture_id
 
 
+# Gives texture coordinates for triangle and rectangle faces.
 def texture_coordinates_for_face(face: Face) -> List[Tuple[float, float]]:
-    """
-    Gives texture coordinates for triangle and rectangle faces.
-    """
     if len(face) == 3:
         return [
             (0.5, 1.0),
@@ -193,16 +189,14 @@ def texture_coordinates_for_face(face: Face) -> List[Tuple[float, float]]:
     ]
 
 
+
+# Draws white model edges.
 def draw_edges(vertices: Tuple[Vec3, ...], edges: Tuple[Edge, ...]) -> None:
-    """
-    Draws white model edges.
-    """
     glDisable(GL_TEXTURE_2D)
     glLineWidth(2)
     glColor3f(1.0, 1.0, 1.0)
 
     glBegin(GL_LINES)
-
     for start, end in edges:
         glVertex3fv(vertices[start])
         glVertex3fv(vertices[end])
@@ -210,37 +204,28 @@ def draw_edges(vertices: Tuple[Vec3, ...], edges: Tuple[Edge, ...]) -> None:
     glEnd()
 
 
+# Question 1: draws the model using white edges only.
 def draw_wireframe_model(model_name: str) -> None:
-    """
-    Question 1: draws the model using white edges only.
-    """
     model = MODELS[model_name]
 
-    vertices: Tuple[Vec3, ...] = model["vertices"]  # type: ignore[assignment]
-    edges: Tuple[Edge, ...] = model["edges"]  # type: ignore[assignment]
+    vertices: Tuple[Vec3, ...] = model["vertices"] #type: ignore
+    edges: Tuple[Edge, ...] = model["edges"]  #type: ignore
 
     draw_edges(vertices, edges)
 
 
+
+# Draws the model surfaces.
 def draw_surface_model(
     model_name: str,
     mode: str,
     texture_id: int | None = None,
 ) -> None:
-    """
-    Draws the model surfaces.
-
-    Modes:
-    - normal: grey surfaces
-    - colour: each face has a different colour
-    - texture: texture image applied
-    - tinted: texture image combined with face colours
-    """
     model = MODELS[model_name]
 
-    vertices: Tuple[Vec3, ...] = model["vertices"]  # type: ignore[assignment]
-    edges: Tuple[Edge, ...] = model["edges"]  # type: ignore[assignment]
-    faces: Tuple[Face, ...] = model["faces"]  # type: ignore[assignment]
+    vertices: Tuple[Vec3, ...] = model["vertices"]  #type: ignore
+    edges: Tuple[Edge, ...] = model["edges"]  #type: ignore
+    faces: Tuple[Face, ...] = model["faces"]  #type: ignore
 
     glDisable(GL_BLEND)
     glEnable(GL_DEPTH_TEST)
@@ -285,12 +270,10 @@ def draw_surface_model(
     draw_edges(vertices, edges)
 
 
-def apply_camera_and_model_transform(state: AppState) -> None:
-    """
-    Moves the camera back and applies translation and rotation.
 
-    The camera is moved backwards so that it is not inside the model.
-    """
+# Moves the camera back and applies translation and rotation.
+# The camera is moved backwards so that it is not inside the model.
+def apply_camera_and_model_transform(state: AppState) -> None:
     glLoadIdentity()
 
     glTranslatef(0.0, 0.0, -7.0)
@@ -303,13 +286,12 @@ def apply_camera_and_model_transform(state: AppState) -> None:
     glRotatef(state.rotation_z, 0.0, 0.0, 1.0)
 
 
+
+# Clears and redraws the scene.
 def draw_scene(
     state: AppState,
     texture_id: int | None = None,
 ) -> None:
-    """
-    Clears and redraws the scene.
-    """
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
     apply_camera_and_model_transform(state)
@@ -322,16 +304,14 @@ def draw_scene(
         draw_surface_model(model_name, state.view_mode, texture_id)
 
 
+
+# Handles keyboard input.
+# Returns False when the program should close.
 def handle_keys(
     event: pygame.event.Event,
     state: AppState,
     allowed_modes: List[str],
 ) -> bool:
-    """
-    Handles keyboard input.
-
-    Returns False when the program should close.
-    """
     key = event.key
 
     movement_step = 0.25
@@ -405,15 +385,15 @@ def handle_keys(
     return True
 
 
+
+# Starts the pygame and OpenGL window.
+
 def run_project(
     window_title: str,
     allowed_modes: List[str],
     starting_mode: str,
     needs_texture: bool = False,
 ) -> None:
-    """
-    Starts the pygame and OpenGL window.
-    """
     pygame.init()
 
     display_width = 1000

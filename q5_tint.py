@@ -1,5 +1,5 @@
 """
-Question 5 - Tint the textured models.
+Tint the texture.
 
 This file includes:
 - Model display
@@ -8,17 +8,6 @@ This file includes:
 - Coloured surfaces
 - Textured surfaces
 - Tinted textured surfaces
-
-Controls:
-M = cycle model
-V = switch between normal, colour, texture and tinted view
-T = toggle texture view
-C = toggle colour view
-A/D = move on X-axis
-W/S = move on Y-axis
-Z/X = move on Z-axis
-Arrow keys = rotate model
-ESC = quit
 """
 
 from common_models import run_project

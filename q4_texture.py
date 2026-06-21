@@ -1,5 +1,5 @@
 """
-Question 4 - Texture the models.
+Texture the models.
 
 This file includes:
 - Model display
@@ -7,17 +7,6 @@ This file includes:
 - Translation
 - Coloured surfaces
 - Textured surfaces using texture.png
-
-Controls:
-M = cycle model
-V = switch between normal, colour and texture view
-T = toggle texture view
-C = toggle colour view
-A/D = move on X-axis
-W/S = move on Y-axis
-Z/X = move on Z-axis
-Arrow keys = rotate model
-ESC = quit
 """
 
 from common_models import run_project
