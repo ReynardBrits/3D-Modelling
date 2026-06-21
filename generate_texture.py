@@ -53,7 +53,6 @@ def create_texture() -> None:
     pygame.draw.circle(surface, orange, (32, 224), 7)
     pygame.draw.circle(surface, blue, (224, 224), 7)
 
-    # Add simple text to make the texture clearly custom
     font = pygame.font.SysFont("Arial", 28, bold=True)
     text = font.render("ITGDA4", True, (240, 240, 240))
     text_rect = text.get_rect(center=(size // 2, size // 2))
